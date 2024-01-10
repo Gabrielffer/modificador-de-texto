@@ -1,0 +1,378 @@
+
+/*
+  / __|__ _| |__ _ _(_)___| |/ _|/ _|___ _ _ 
+ | (_ / _` | '_ \ '_| / -_) |  _|  _/ -_) '_|
+  \___\__,_|_.__/_| |_\___|_|_| |_| \___|_|  
+ https://github.com/Gabrielffer
+*/
+
+*{
+    margin  : 0;
+    padding : 0;
+}
+
+body{
+    color            : white;
+    padding-bottom   : 60px;
+    background-color : #1a1a1a;
+}
+
+header{
+    color               : white;
+    padding             : 5px;
+    text-align          : center;
+    background-color    : #1c4263;
+    border-bottom-style : solid;
+    border-bottom-width : 1px;
+    border-bottom-color : #5BC0DE;
+}
+
+header:hover{
+    border-bottom-color : #449D44;
+}
+
+header h1{
+    font-family    : sans-serif;
+    word-spacing   : 5px;
+    text-transform : uppercase;
+    letter-spacing : 2px;
+}
+
+noscript{
+    position : absolute;
+}
+
+noscript p{
+    color                     : red;
+    margin-top                : 10px;
+    margin-left               : 10px;
+    animation-name            : jsDesativado;
+    animation-duration        : 2s;
+    animation-iteration-count : infinite;
+}
+
+section#area_metodos{
+    width        : 420px;
+    margin-top   : 20px;
+    margin-left  : auto;
+    margin-right : auto;
+}
+
+section#area_metodos select#metodos{
+    color            : white;
+    width            : 300px;
+    padding          : 7px;
+    display          : inline-block;
+    margin-left      : auto;
+    border-color     : #5BC0DE;
+    margin-right     : auto;
+    background-color : #1c4263;
+}
+
+section#area_metodos button#bt_copiar{
+    color            : white;
+    float            : right;
+    width            : 100px;
+    border           : none;
+    padding          : 9px;
+    margin-bottom    : 1px;
+    background-color : #449D44;
+}
+
+section#area_metodos button#bt_copiar:hover{
+    background-color : #2E7D32;
+}
+
+section#area_configuracoes{
+    width        : 550px;
+    text-align   : center;
+    margin-top   : 10px;
+    margin-left  : auto;
+    margin-right : auto;
+}
+
+section#area_configuracoes div.div_oculta{
+    display : none;
+}
+
+section#area_configuracoes div hr{
+    border-color : #449D44;
+}
+
+section#area_configuracoes input[type="text"]{
+    width            : 80px;
+    color            : white;
+    padding          : 4px;
+    border-style     : solid;
+    border-width     : 1px;
+    border-color     : #5BC0DE;
+    background-color : transparent;
+}
+
+textarea#texto{
+    color            : white;
+    width            : 1100px;
+    height           : 360px;
+    padding          : 6px;
+    display          : block;
+    margin-top       : 12px;
+    margin-left      : auto;
+    margin-right     : auto;
+    border-style     : solid;
+    border-width     : 2px;
+    border-color     : #1c4263;
+    background-color : transparent;
+}
+
+textarea#texto:focus{
+    border-color : #449D44;
+}
+
+section#area_meta_dados{
+    width            : 1083px;
+    padding          : 6px;
+    margin-top       : 10px;
+    margin-left      : auto;
+    border-style     : solid;
+    border-width     : 1px;
+    border-color     : #337AB7;
+    margin-right     : auto;
+    background-color : #1c4263;
+}
+
+section#area_meta_dados span.ref_info{
+    color : white;
+}
+
+section#area_meta_dados span.ref_info:last-child{
+    float : right;
+}
+
+section#area_meta_dados span.res_info{
+    color : #5BC0DE;
+}
+
+section#area_controle{
+    width        : 1100px;
+    text-align   : center;
+    margin-top   : 10px;
+    margin-left  : auto;
+    margin-right : auto;
+}
+
+section#area_controle span#situacao{
+    color      : lime;
+    display    : block;
+    margin-top : 10px;
+    text-align : center;
+}
+
+section#area_controle input[type="image"]{
+    width  : 25px;
+    height : 25px;
+}
+
+section#area_controle button#bt_modificar{
+    color            : white;
+    width            : 200px;
+    padding          : 8px;
+    border-style     : none;
+    background-color : #1a1aff;
+}
+
+section#area_controle button#bt_modificar:hover{
+    background-color : #3333ff;
+}
+
+article{
+    width            : 900px;
+    padding          : 25px;
+    margin-top       : 10px;
+    margin-left      : auto;
+    margin-right     : auto;
+    padding-bottom   : 0px;
+    border-top-style : solid;
+    border-top-width : 1px;
+    border-top-color : #449D44;
+}
+
+article p{
+    margin-top : 15px;
+}
+
+article p strong{
+    color : gold;
+}
+
+article p b{
+    color : #449D44;
+}
+
+article section{
+    padding          : 5px;
+    border-top-style : solid;
+    border-top-color : #5BC0DE;
+    border-top-width : 1px;
+}
+
+article section p{
+    margin-left : 40px;
+}
+
+article footer{
+    left             : 0;
+    width            : 100%;
+    height           : 20px;
+    bottom           : 0;
+    padding          : 5px;
+    display          : flex;
+    position         : fixed;
+    justify-content  : space-between;
+    background-color : #1c4263;
+    border-top-style : solid;
+    border-top-width : 1px;
+    border-top-color : #5BC0DE;
+}
+
+article footer p{
+    color      : white;
+    margin-top : 0;
+}
+
+article footer #p1, article footer #p3{
+    flex : 1;
+}
+
+article footer #p2{
+    flex        : 0;
+    white-space : nowrap;
+}
+
+article footer #p3{
+    text-align   : right;
+    margin-right : 10px;
+}
+
+article footer p a{
+    color           : gold;
+    text-decoration : none;
+}
+
+article footer p a:hover{
+    color : goldenrod;
+}
+
+article footer p a:active{
+    color : darkgoldenrod;
+}
+
+article footer:hover{
+    border-top-color : #449D44;
+}
+
+button{
+    cursor : pointer;
+}
+
+button,
+select,
+textarea#texto,
+input{
+    outline : none;
+}
+
+@keyframes jsDesativado{
+
+    0%{
+        color : red;
+    }
+
+    50%{
+        color : #e60000;
+    }
+
+    100%{
+        color : #b30000;
+    }
+
+}
+
+@media screen and (min-width: 319px) and (max-width: 1020px){
+
+    body{
+        padding-bottom : 30px;
+    }
+
+    header h1{
+        word-spacing   : 5px;
+        text-transform : none;
+        letter-spacing : 0;
+    }
+
+    section#area_metodos,
+    section#area_configuracoes{
+        width : 98%;
+    }
+
+    section#area_metodos select#metodos{
+        width : 65%;
+    }
+
+    section#area_metodos button#bt_copiar{
+        width : 30%;
+    }
+
+    textarea#texto{
+        width   : 94%;
+        height  : 360px;
+        padding : 4px;
+    }
+
+    section#area_meta_dados{
+        width   : 92%;
+        padding : 6px;
+    }
+
+    section#area_controle{
+        width : 95%;
+    }
+
+    article{
+        width      : 95%;
+        padding    : 0;
+        margin-top : 10px;
+    }
+
+    article section p{
+        margin-left : 12px;
+    }
+
+}
+
+@media screen and (min-width: 319px) and (max-width: 426px){
+
+    body{
+        padding-bottom : 0;
+    }
+
+    article{
+        width : 100%;
+    }
+
+    article footer{
+        height         : auto;
+        position       : unset;
+        text-align     : center;
+        flex-direction : column;
+    }
+
+    article footer p{
+        margin-top : 5px;
+    }
+
+    article footer #p3{
+        text-align   : unset;
+        margin-right : 0;
+    }
+
+}

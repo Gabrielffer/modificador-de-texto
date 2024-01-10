@@ -1,0 +1,189 @@
+﻿
+<!--
+   ___      _        _     _  __  __         
+  / __|__ _| |__ _ _(_)___| |/ _|/ _|___ _ _ 
+ | (_ / _` | '_ \ '_| / -_) |  _|  _/ -_) '_|
+  \___\__,_|_.__/_| |_\___|_|_| |_| \___|_|  
+ https://github.com/Gabrielffer
+-->
+
+<!DOCTYPE html>
+<html lang='pt-br'>
+
+    <head>
+
+        <title>Modificador de Texto</title>
+        <meta charset='UTF-8'>
+        <meta name='description' content='Sistema rápido e simples para modificar todo um texto com base na função escolhida.'>
+        <meta name='keywords' content='modificador, modificar, texto, prefixo, sufixo, localizar, substituir, inverter, indentar, tamanho, fonte, indentação, espaços, quebra, linha, maiúscula, minúscula, letra, letras, palavra, palavras'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'>
+        <link rel='stylesheet' href='estilos.css'>
+        <link rel='icon' href='imagens/icone.png'>
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Modificador de Texto</h1>
+        </header>
+
+        <noscript>
+            <p>É preciso estar com o JavaScript ativado</p>
+        </noscript>
+
+        <section id='area_metodos'>
+            <select id='metodos'>
+                <option selected hidden>Selecione um método</option>
+                <optgroup label='Adicionar'>
+                    <option value='1'>Prefixo/sufixo</option>
+                    <option value='2'>Quebras de linhas</option>
+                </optgroup>
+                <optgroup label='Converter'>
+                    <option value='3'>1 letra para maiúscula</option>
+                    <option value='4'>Tamanho da fonte</option>
+                </optgroup>
+                <optgroup label='Remover'>
+                    <option value='5'>Quebras de Linha</option>
+                    <option value='6'>Espaços</option>
+                </optgroup>
+                <optgroup label='Outros'>
+                    <option value='7'>Indentar parágrafos</option>
+                    <option value='8'>Inverter texto</option>
+                    <option value='9'>Localizar e substituir</option>
+                </optgroup>
+            </select>
+            <button id='bt_copiar'>Copiar Texto</button>
+        </section>
+
+        <section id='area_configuracoes'>
+            <div id='div_prefixo_sufixo' class='div_oculta'>
+                <label for='prefixo'>Prefixo</label>
+                <input type='text' id='prefixo'> <br> <br>
+                <label for='sufixo'>Sufixo</label>
+                <input type='text' id='sufixo'> <br> <br>
+                <input type='radio' name='config_prefixo_sufixo' id='prefixo_sufixo_cada_paragrafo' checked>
+                <label for='prefixo_sufixo_cada_paragrafo'>Cada parágrafo</label> &nbsp;
+                <input type='radio' name='config_prefixo_sufixo' id='prefixo_sufixo_cada_conjunto'>
+                <label for='prefixo_sufixo_cada_conjunto'>Cada conjunto</label>
+            </div>
+            <div id='div_adicao_quebras_de_linha' class='div_oculta'>
+                <label for='qtd_quebras'>Quantidade</label> <br>
+                <input type='text' id='qtd_quebras'>
+            </div>
+            <div id='div_1letra_maiuscula' class='div_oculta'>
+                <input type='radio' id='1letra_maiuscula_todas_letras' name='config_1letra_maiuscula'>
+                <label for='1letra_maiuscula_todas_letras'>Todas as letras</label> &nbsp;
+                <input type='radio' id='1letra_maiuscula_capitular' name='config_1letra_maiuscula' checked>
+                <label for='1letra_maiuscula_capitular'>Letra capitular</label>
+            </div>
+            <div id='div_conversao_tamanho' class='div_oculta'>
+                <input type='radio' name='modo_conversao' id='tudo_para_maiusculo' checked>
+                <label for='tudo_para_maiusculo'>Maiúscula</label> &nbsp;
+                <input type='radio' name='modo_conversao' id='tudo_para_minusculo'>
+                <label for='tudo_para_minusculo'>Minúscula</label>
+            </div>
+			<div id='div_remocao_quebras_linha' class='div_oculta'>
+				<input type='radio' name='config_remover_quebras' id='remover_todas_quebras'>
+				<label for='remover_todas_quebras'>Todas</label> &nbsp;
+				<input type='radio' name='config_remover_quebras' id='remover_quebras_duplicadas' checked>
+				<label for='remover_quebras_duplicadas'>Duplicadas</label>
+			</div>
+            <div id='div_remocao_espacos' class='div_oculta'>
+                <input type='radio' name='config_remover_espacos' id='remover_todos_espacos'>
+                <label for='remover_todos_espacos'>Todos os espaços</label> &nbsp;
+                <input type='radio' name='config_remover_espacos' id='remover_espacos_duplicados' checked>
+                <label for='remover_espacos_duplicados'>Espaços duplicados</label>
+            </div>
+            <div id='div_indentacao' class='div_oculta'>
+                <label for='qtd_espaco_indentacao'>Quantidade de espaço</label> <br>
+                <input type='text' id='qtd_espaco_indentacao'>
+            </div>
+            <div id='div_substituicao' class='div_oculta'>
+                <label for='alvo_substituicao'>Substituir</label>
+                <input type='text' id='alvo_substituicao'> &nbsp;
+                <label for='substituto'>Por</label>
+                <input type='text' id='substituto'>
+            </div>
+        </section>
+
+        <textarea id='texto' spellcheck='false' placeholder='Digite/cole o seu texto aqui'></textarea>
+
+        <section id='area_meta_dados'>
+            <span class='ref_info'>
+                Total de caracteres: <span id='total_caracteres' class='res_info'>0</span>
+            </span>
+            <span class='ref_info'>
+                Total de palavras: <span id='total_palavras' class='res_info'>0</span>
+            </span>
+        </section>
+
+        <section id='area_controle'>
+            <input type='image' src='imagens/voltar.png' id='bt_voltar' align='left' title='Voltar'>
+            <button type='button' id='bt_modificar'>
+                Modificar
+            </button>
+            <input type='image' src='imagens/avancar.png' id='bt_avancar' align='right' title='Avançar'>
+            <p id='situacao'></p>
+        </section>
+
+        <article>
+            <h2>Sobre</h2>
+            <p>
+                Sistema simples e rápido para modificar todo um texto.
+            </p>
+			<p>
+				Em cada lado do botão <strong>modificar</strong> existe uma seta, esta seta serve para voltar ou avançar, toda modificação feita é gravada em um histórico temporário, ou seja, todo o histórico será excluído se a página for fechada ou atualizada.
+			</p>
+			<section>
+				<h3>Adição</h3>
+				<p>
+					Com o método de modificação de texto, <strong>prefixo/sufixo</strong>, cada parágrafo ou item de lista será alterado conforme os parâmetros passados (prefixo e sufixo).
+					Você pode usar esse método para adicionar um ponto no final de cada parágrafo por exemplo.
+				</p>
+				<p>
+					Usando o método <strong>quebras de linhas</strong>, o Modificador vai remover todas as quebras existentes e adicionar novas conforme a quantidade de quebras informadas. 
+				</p>
+			</section>
+			<section>
+				<h3>Conversão</h3>
+				<p>
+					Método <strong>1º letra para maiúscula</strong> pega a primeira letra de cada parágrafo ou item de uma lista e transforma em maiúscula.
+				</p>
+				<p>
+					O método <strong>tamanho da fonte</strong> converte todo o texto para maiúscula ou minúscula, você escolhe.
+				</p>
+			</section>
+			<section>
+				<h3>Remoção</h3>
+				<p>
+					Método <strong>quebras de linha</strong> vai remover as quebras de linha presentes no texto, você pode escolher entre remover todas ou apenas as quebras de linha duplicadas.
+				</p>
+				<p>
+					<strong>Espaços</strong>, vai remover todos os espaços ou apenas os espaços duplicados, você decide.
+				</p>
+			</section>
+			<section>
+				<h3>Outros</h3>
+				<p>
+					<strong>Indentar parágrafos</strong> vai indentar todos os parágrafos usando a quantidade de espaços informada.
+				</p>
+				<p>
+					<strong>Inverter texto</strong> vai inverter todo o texto, se você clicar novamente o texto voltará ao seu estado normal.
+				</p>
+				<p>
+					Último método, <strong>Localizar e substituir</strong> vai procurar o alvo e substituir pelo caractere informado ou vai simplesmente remover o alvo, caso não informe um substituto.
+				</p>
+			</section>
+            <footer>
+                <p id='p1'>Última atualização: 23/11/2023</p>
+                <p id='p2'>Desenvolvido por <a href='https://github.com/Gabrielffer' target='_blank'>Gabrielffer</a></p>
+                <p id='p3'>Icones de <a href='https://icon-icons.com/' target='_blank'>Icon-icons</a></p>
+            </footer>
+        </article>
+
+        <script src='funcionalidades.js'></script>
+
+    </body>
+
+</html>
